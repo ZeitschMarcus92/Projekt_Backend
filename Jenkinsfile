@@ -10,20 +10,23 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                dir('Projekt_Backend') {
+                    sh './mvnw clean install'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                dir('Projekt_Backend') {
+                    sh './mvnw test'
+                }
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Hier erfolgt das Deployment'
-                // z.B. sh './deploy.sh'
             }
         }
     }
