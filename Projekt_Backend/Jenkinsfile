@@ -1,46 +1,30 @@
 pipeline {
-  agent any
-  
-  triggers {
-    githubPush()
-  }
+    agent any
 
-  stages {
-    stage('Checkout') {
-      steps {
-        git 'https://github.com/ZeitschMarcus92/Projekt_Backend.git'
-      }
-    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
 
-    stage('Build') {
-      steps {
-        sh 'mvn clean install'
-      }
-    }
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
 
-    stage('Test') {
-      steps {
-        echo 'Hier teste ich'
-        sh 'mvn test'
-        echo 'Tests erfogreich'
-      }
-    }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
 
-    stage('Deploy') {
-      steps {
-        echo 'Hier deploye ich'
-        echo 'Deployment erfogreich'
-        // sh 'deploy-script'  
-      }
+        stage('Deploy') {
+            steps {
+                echo 'Hier erfolgt das Deployment'
+                // z.B. sh './deploy.sh'
+            }
+        }
     }
-  }
-
-  post {
-    success{
-      echo 'Pipeline erfogreich'
-    }
-    failure{
-      echo 'Pipeline fehlgeschlagen'
-    }
-  }
 }
