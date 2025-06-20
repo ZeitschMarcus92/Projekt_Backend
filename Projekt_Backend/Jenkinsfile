@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/JonasBa97/Projekt_3_Backend.git'
+        git 'https://github.com/ZeitschMarcus92/Projekt_Backend.git'
       }
     }
 

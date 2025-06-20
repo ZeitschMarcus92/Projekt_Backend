@@ -34,4 +34,4 @@ jobs:
         run: |
           echo "Hier deploye ich"
           echo "Deployment erfolgreich"
-        # deploy-script
+
